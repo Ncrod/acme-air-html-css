@@ -39,7 +39,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Banner superior con el degradado corporativo (#d13cff -> #00b0ff) */
+
 .header-banner {
     background: linear-gradient(90deg, #d13cff 0%, #00b0ff 100%);
     padding: 2.5rem 1.25rem;

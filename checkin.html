@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ACME AIR: realiza el check-in de tu vuelo y registra un contacto de emergencia.">
+    <title>Check In - Acme Air</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/checkin.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Banner superior -->
+        <header class="header-banner">
+            <a href="menu.html" aria-label="Acme Air, ir al menú principal">
+                <img src="img/icons/Logo.svg" alt="Acme Air - Flying to your dreams" class="logo">
+            </a>
+        </header>
+
+        <!-- Contenedor de la tarjeta blanca -->
+        <main class="card-container">
+
+            <!-- Usuario y cierre de sesión -->
+            <section class="usuario" aria-label="Sesión de usuario">
+                <svg class="usuario__avatar" viewBox="0 0 64 64" role="img" aria-label="Foto de perfil de John Doe">
+                    <circle cx="32" cy="32" r="31" fill="#fff" stroke="#c9c9d1" stroke-width="2"/>
+                    <circle cx="32" cy="24" r="10" fill="#7e57c2"/>
+                    <path d="M12 52c2-11 11-16 20-16s18 5 20 16c-6 6-13 9-20 9s-14-3-20-9z" fill="#c2409a"/>
+                </svg>
+                <div class="usuario__datos">
+                    <p class="usuario__nombre">John Doe</p>
+                    <a class="usuario__salir" href="index.html">Cerrar Sesión</a>
+                </div>
+            </section>
+
+            <h1 class="titulo" id="titulo-checkin">Check In</h1>
+
+            <!-- Vuelo seleccionado -->
+            <article class="vuelo" aria-label="Vuelo VAA025">
+                <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
+                <div class="vuelo__info">
+                    <p class="vuelo__horario"><time>05:30</time> - <time>06:30</time></p>
+                    <p class="vuelo__duracion">1h 00 min</p>
+                    <p class="vuelo__ruta">Bogotá - Barranquilla</p>
+                </div>
+                <p class="vuelo__codigo vuelo__codigo--grande">VAA025</p>
+            </article>
+
+            <!-- Formulario de check-in -->
+            <form class="formulario-checkin" action="menu.html" method="get" aria-labelledby="titulo-checkin">
+
+                <fieldset class="grupo">
+                    <legend class="grupo__titulo">Datos de la reserva</legend>
+                    <div class="campo">
+                        <input type="text" id="reserva" name="reserva" placeholder=" " value="VAA025" autocomplete="off" required>
+                        <label for="reserva">No. de vuelo o reserva</label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="grupo">
+                    <legend class="grupo__titulo">Contacto En Caso De Emergencia</legend>
+                    <div class="campo">
+                        <input type="text" id="contacto-nombre" name="contacto-nombre" placeholder=" " autocomplete="name" required>
+                        <label for="contacto-nombre">Nombre completo</label>
+                    </div>
+                    <div class="campo">
+                        <input type="tel" id="contacto-telefono" name="contacto-telefono" placeholder=" " autocomplete="tel" inputmode="tel" required>
+                        <label for="contacto-telefono">No. Teléfono Celular</label>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-primario">Guardar</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
