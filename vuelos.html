@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ACME AIR: vuelos disponibles para la ruta y fecha seleccionadas.">
+    <title>Vuelos Disponibles - Acme Air</title>
+    <!-- Tipografía Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/vuelos.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Banner superior -->
+        <header class="header-banner">
+            <a href="menu.html" aria-label="Acme Air, ir al menú principal">
+                <img src="img/icons/Logo.svg" alt="Acme Air - Flying to your dreams" class="logo">
+            </a>
+        </header>
+
+        <!-- Contenedor de la tarjeta blanca -->
+        <main class="card-container">
+
+            <!-- Usuario y cierre de sesión -->
+            <section class="usuario" aria-label="Sesión de usuario">
+                <svg class="usuario__avatar" viewBox="0 0 64 64" role="img" aria-label="Foto de perfil de John Doe">
+                    <circle cx="32" cy="32" r="31" fill="#fff" stroke="#c9c9d1" stroke-width="2"/>
+                    <circle cx="32" cy="24" r="10" fill="#7e57c2"/>
+                    <path d="M12 52c2-11 11-16 20-16s18 5 20 16c-6 6-13 9-20 9s-14-3-20-9z" fill="#c2409a"/>
+                </svg>
+                <div class="usuario__datos">
+                    <p class="usuario__nombre">John Doe</p>
+                    <a class="usuario__salir" href="index.html">Cerrar Sesión</a>
+                </div>
+            </section>
+
+            <h1 class="titulo" id="titulo-vuelos">Vuelos disponibles</h1>
+
+            <!-- Resumen de la búsqueda -->
+            <p class="resumen-busqueda">
+                <span>Bogotá - Barranquilla</span>
+                <time datetime="2026-09-29">Septiembre - 29</time>
+            </p>
+
+            <!-- Listado de vuelos -->
+            <ul class="lista-vuelos" aria-labelledby="titulo-vuelos">
+                <li>
+                    <article class="vuelo" aria-label="Vuelo VAA025">
+                        <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
+                        <div class="vuelo__info">
+                            <p class="vuelo__horario"><time>05:30</time> - <time>06:30</time></p>
+                            <p class="vuelo__duracion">1h 00 min</p>
+                        </div>
+                        <div class="vuelo__extra">
+                            <p class="vuelo__codigo">VAA025</p>
+                            <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>150.600</strong></p>
+                        </div>
+                    </article>
+                </li>
+                <li>
+                    <article class="vuelo" aria-label="Vuelo VAA412">
+                        <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
+                        <div class="vuelo__info">
+                            <p class="vuelo__horario"><time>10:30</time> - <time>12:05</time></p>
+                            <p class="vuelo__duracion">1h 35 min</p>
+                        </div>
+                        <div class="vuelo__extra">
+                            <p class="vuelo__codigo">VAA412</p>
+                            <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>260.050</strong></p>
+                        </div>
+                    </article>
+                </li>
+                <li>
+                    <article class="vuelo" aria-label="Vuelo VAA836">
+                        <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
+                        <div class="vuelo__info">
+                            <p class="vuelo__horario"><time>14:15</time> - <time>15:45</time></p>
+                            <p class="vuelo__duracion">1h 30 min</p>
+                        </div>
+                        <div class="vuelo__extra">
+                            <p class="vuelo__codigo">VAA836</p>
+                            <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>150.600</strong></p>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+
+            <a href="menu.html" class="btn-primario">Volver</a>
+        </main>
+    </div>
+</body>
+</html>
