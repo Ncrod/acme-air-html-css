@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - Acme Air</title>
+    <!-- Tipografía Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Banner superior -->
+        <header class="header-banner">
+            <img src="img/Logo.svg" alt="Acme Air - Flying to your dreams" class="logo">
+        </header>
+
+        <!-- Contenedor de la tarjeta blanca -->
+        <main class="card-container">
+            <div class="menu-content">
+                <h1>¡Hola John Doe!</h1>
+                <p class="subtitle">¿Qué quieres hacer?</p>
+                <a href="index.html" class="logout-link">Cerrar Sesión</a>
+
+                <!-- Opciones del menú -->
+                <nav class="options-list" aria-label="Opciones del menú principal">
+                    <a href="buscar-vuelos.html" class="menu-card">
+                        <div class="card-icon">
+                            <img src="img/icons/plane.svg" alt="">
+                        </div>
+                        <span class="card-title">Buscar vuelos</span>
+                        <img src="img/icons/chevron-right.svg" class="arrow-icon" alt="" aria-hidden="true">
+                    </a>
+
+                    <a href="checkin.html" class="menu-card">
+                        <div class="card-icon">
+                            <img src="img/icons/clipboard-check.svg" alt="">
+                        </div>
+                        <span class="card-title">Check In</span>
+                        <img src="img/icons/chevron-right.svg" class="arrow-icon" alt="" aria-hidden="true">
+                    </a>
+
+                    <a href="mis-vuelos.html" class="menu-card">
+                        <div class="card-icon">
+                            <img src="img/icons/list.svg" alt="">
+                        </div>
+                        <span class="card-title">Mis Vuelos</span>
+                        <img src="img/icons/chevron-right.svg" class="arrow-icon" alt="" aria-hidden="true">
+                    </a>
+                </nav>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
