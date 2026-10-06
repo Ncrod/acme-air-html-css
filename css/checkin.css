@@ -52,7 +52,7 @@ body {
     filter: brightness(0) invert(1); /* Pone el logo de color blanco */
 }
 
-/* Tarjeta blanca inferior */
+
 .card-container {
     background-color: #ffffff;
     flex: 1;
