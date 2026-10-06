@@ -1,3 +1,7 @@
+/* ==========================================
+   ESTILOS GENERALES Y CORPORATIVOS
+   (misma estructura que menu.css y buscar-vuelos.css)
+   ========================================== */
 :root {
     --fondo-pagina: #ffffff;
     --fondo-pagina-desktop: #ffffff;
@@ -209,106 +213,18 @@ input:focus-visible {
 }
 
 /* ==========================================
-   CHECK IN
+   MIS VUELOS
    ========================================== */
-.vuelo__codigo--grande {
-    align-self: center;
-    font-size: clamp(1.25rem, 1rem + 1.2vw, 1.625rem);
+.vuelo__estado {
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    font-weight: 500;
+    text-transform: uppercase;
     color: #666;
 }
 
-/* Tarjeta del formulario */
-.formulario-checkin {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-    padding: 1.5rem 1.25rem;
-    border: 1px solid var(--borde);
-    border-radius: 0.75rem;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.formulario-checkin .btn-primario {
-    margin-top: 0;
-}
-
-.grupo {
-    border: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.grupo__titulo {
-    margin-bottom: 1.25rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--texto-suave);
-}
-
-/* Campos con etiqueta flotante (igual que en Búsqueda de vuelos) */
-.campo {
-    position: relative;
-}
-
-.campo input {
-    width: 100%;
-    height: 3.5rem;
-    padding: 1rem 0.9rem 0.25rem;
-    border: 1px solid var(--borde);
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    color: var(--texto);
-    background-color: #fff;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.campo input:hover {
-    border-color: var(--texto-suave);
-}
-
-.campo input:focus {
-    border-color: var(--azul);
-    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.25);
-    outline: none;
-}
-
-.campo label {
-    position: absolute;
-    left: 0.9rem;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 0.25rem;
-    margin-left: -0.25rem;
-    font-size: 1rem;
-    color: var(--texto-suave);
-    background-color: #fff;
-    pointer-events: none;
-    transition: top 0.15s ease, font-size 0.15s ease, color 0.15s ease;
-}
-
-.campo input:focus + label,
-.campo input:not(:placeholder-shown) + label {
-    top: 0;
-    font-size: 0.75rem;
-}
-
-.campo input:focus + label {
-    color: var(--azul);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .campo input,
-    .campo label {
-        transition: none;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .formulario-checkin {
-        padding: 1.25rem 0.875rem;
-    }
+/* El estado se lee en el texto; el color solo lo refuerza */
+.vuelo__estado--a-tiempo {
+    color: #2e7d32;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -421,43 +337,24 @@ input:focus-visible {
     }
 }
 
-/* Check-in: en tablet el formulario mantiene un ancho cómodo; en desktop
-   el vuelo y el formulario se ubican lado a lado */
+/* Mis vuelos: cuadrícula fluida (1 o 2 columnas en tablet, 2 o 3 según el
+   ancho disponible en desktop) */
 @media screen and (min-width: 768px) {
-    .card-container > .vuelo,
-    .formulario-checkin {
-        max-width: 40rem;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-    }
-
-    .formulario-checkin {
-        margin-top: 2rem;
-        padding: 2rem;
-    }
-
-    .formulario-checkin .btn-primario {
-        max-width: none;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .card-container {
+    .lista-vuelos {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
-        column-gap: 2rem;
-        align-items: start;
+        grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+        gap: 1.5rem;
     }
 
-    .usuario,
-    .titulo {
-        grid-column: 1 / -1;
+    .lista-vuelos > li {
+        display: flex;
     }
 
-    .card-container > .vuelo,
-    .formulario-checkin {
-        max-width: none;
-        margin: 0;
+    .vuelo {
+        flex: 1;
+    }
+
+    .btn-primario {
+        margin-top: 2.5rem;
     }
 }
