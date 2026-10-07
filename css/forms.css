@@ -1,10 +1,5 @@
-/* ==========================================
-   forms.css
-   Campos, formularios, casillas, enlaces de formulario,
-   filtros tipo chip y su lógica solo con CSS (:checked / :has).
-   ========================================== */
 
-/* ---------- 1. Formulario base ---------- */
+/* Formulario base*/
 .formulario {
     display: flex;
     flex-direction: column;
@@ -30,8 +25,7 @@
     margin-top: 0;
 }
 
-/* ---------- 2. Campo con etiqueta flotante ----------
-   Requiere: <div class="campo"><input placeholder=" "><label></label></div> */
+/* Campo con etiqueta flotante */
 .campo {
     position: relative;
 }
@@ -84,7 +78,7 @@
     color: var(--azul);
 }
 
-/* ---------- 3. Grupo de campos (fieldset) ---------- */
+/* Grupo de campos (fieldset)  */
 .grupo {
     display: flex;
     flex-direction: column;
@@ -99,7 +93,7 @@
     color: var(--texto-suave);
 }
 
-/* ---------- 4. Casilla de verificación ("Solo ida", "Recordar mis datos") ---------- */
+/* Casilla de verificación ("Solo ida", "Recordar mis datos") */
 .campo-check {
     display: flex;
     align-items: center;
@@ -123,7 +117,7 @@
     display: none;
 }
 
-/* ---------- 5. Enlaces bajo un formulario ---------- */
+/* Enlaces bajo un formulario */
 .links-row {
     display: flex;
     flex-direction: column;
@@ -142,7 +136,7 @@
     text-decoration: underline;
 }
 
-/* ---------- 6. Caja de formulario de autenticación ---------- */
+/* Caja de formulario de autenticación */
 .form-box {
     width: 100%;
     max-width: 22.5rem;
@@ -159,9 +153,7 @@
     color: #666;
 }
 
-/* ---------- 7. Filtros tipo chip (solo CSS) ----------
-   Estructura: .resultados > [input radio oculto]… + .filtros + ul.lista-vuelos
-   Los radios van antes de la lista para poder usar el selector ~ */
+/* Filtros tipo chip (solo CSS) */
 .resultados {
     position: relative;
     display: flex;
@@ -233,9 +225,7 @@
     display: none;
 }
 
-/* ---------- 8. Ocultar una tarjeta individual (solo CSS) ----------
-   Cada <article class="vuelo"> incluye un checkbox oculto .vuelo-dismiss
-   y un botón "×". Al marcarlo, :has() oculta su <li> completo. */
+/* Ocultar una tarjeta individual */
 .vuelo-dismiss {
     position: absolute;
     width: 1px;

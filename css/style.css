@@ -1,10 +1,6 @@
-/* ==========================================
-   style.css
-   Tokens (variables), reset y componentes globales.
-   Orden de carga: style → layout → forms → responsive
-   ========================================== */
+/* Componentes globales*/
 
-/* ---------- 1. Tokens ---------- */
+
 :root {
     /* Corporativo */
     --color-inicio: #d13cff;

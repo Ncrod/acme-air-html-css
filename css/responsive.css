@@ -1,21 +1,4 @@
-/* ==========================================
-   responsive.css
-   Todos los breakpoints del proyecto:
-     320px  → móvil pequeño (ajustes de compactación)
-     768px  → tablet (app tipo dashboard: sidebar fijo separado del
-              contenido, a todo el ancho de la pantalla)
-     1024px → desktop (mismo esquema que tablet, con más espacio)
-   Base = móvil (mobile-first) en style.css, layout.css y forms.css.
-   En móvil el menú es desplegable: el botón hamburguesa abre un
-   panel que empuja el contenido hacia abajo. Desde 768px el menú
-   deja de ser un panel flotante: pasa a ser un sidebar fijo y
-   siempre visible, separado del contenido (no una tarjeta de
-   móvil estirada en medio de la pantalla).
-   ========================================== */
-
-/* ==========================================
-   320px — Móvil pequeño
-   ========================================== */
+/*  320px — Móvil pequeño */
 @media screen and (max-width: 320px) {
     .site-header {
         padding: 1.125rem 0.9375rem;
@@ -71,13 +54,8 @@
     }
 }
 
-/* ==========================================
-   768px — Tablet y escritorio
-   La app pasa a ser un layout de dos columnas: sidebar fijo y
-   siempre visible a la izquierda, cabecera + contenido a la
-   derecha ocupando el resto del ancho completo de la ventana.
-   El botón hamburguesa desaparece: ya no hace falta desplegar nada.
-   ========================================== */
+/* 
+   768px — Tablet y escritorio*/
 @media screen and (min-width: 768px) {
     body {
         background-color: var(--fondo-app);
@@ -149,9 +127,7 @@
         font-weight: 600;
     }
 
-    /* Contenido: centrado con un ancho máximo y padding lateral, dentro de
-       su propia columna (ocupa todo el alto y ancho que le sobra a la
-       derecha del sidebar, nunca una tarjeta angosta flotando sola) */
+
     .content {
         grid-column: 2;
         grid-row: 2;
@@ -298,11 +274,7 @@
     }
 }
 
-/* ==========================================
-   1024px — Desktop
-   Mismo esquema de dos columnas que la tablet, con un sidebar y
-   un contenido algo más amplios para aprovechar el ancho extra.
-   ========================================== */
+/* 1024px — Desktop*/
 @media screen and (min-width: 1024px) {
     .app {
         grid-template-columns: 17rem minmax(0, 1fr);
@@ -361,7 +333,6 @@
         gap: 1.75rem;
     }
 
-    /* Menú principal: tarjetas aún más grandes */
     .opciones {
         gap: 1.75rem;
     }
@@ -401,9 +372,7 @@
     }
 }
 
-/* ==========================================
-   Movimiento reducido (accesibilidad)
-   ========================================== */
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
