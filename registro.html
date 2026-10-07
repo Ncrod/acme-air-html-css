@@ -3,39 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/registro.css">
+    <meta name="description" content="ACME AIR: crea tu cuenta con tus datos personales.">
     <title>Crear cuenta - ACME AIR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <div class="registro-page">
-        <div class="image-side">
-            <img src="img/icons/LogoBlanco.svg" alt="ACME AIR">
+    <div class="auth">
+        <div class="auth__brand">
+            <img src="img/icons/LogoBlanco.svg" alt="ACME AIR" class="auth__logo">
         </div>
-        <div class="form-side">
+
+        <div class="auth__form">
             <div class="form-box">
-                <h1>Crear cuenta</h1>
+                <h1 class="titulo">Crear cuenta</h1>
 
-                <form>
-                    <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+                <form class="formulario">
+                    <div class="campo">
+                        <input type="text" id="nombre" name="nombre" placeholder=" " autocomplete="name" required>
+                        <label for="nombre">Nombre completo</label>
+                    </div>
 
-                    <label for="identificacion">Identificación</label>
-                    <input type="text" id="identificacion" name="identificacion" placeholder="Número de identificación" required>
+                    <div class="campo">
+                        <input type="text" id="identificacion" name="identificacion" placeholder=" " required>
+                        <label for="identificacion">Identificación</label>
+                    </div>
 
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                    <div class="campo">
+                        <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required>
+                        <label for="email">E-mail</label>
+                    </div>
 
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                    <div class="campo">
+                        <input type="tel" id="telefono" name="telefono" placeholder=" " autocomplete="tel" inputmode="tel" required>
+                        <label for="telefono">Teléfono</label>
+                    </div>
 
-                    <label for="ciudad">Ciudad</label>
-                    <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" required>
+                    <div class="campo">
+                        <input type="text" id="ciudad" name="ciudad" placeholder=" " autocomplete="address-level2" required>
+                        <label for="ciudad">Ciudad</label>
+                    </div>
 
-                    <a href="crear-contrasena.html" class="btn-primary">Guardar</a>
+                    <a href="crear-contrasena.html" class="btn-primario">Guardar</a>
                 </form>
 
                 <div class="links-row">
-                    <a href="login.html">Ya tengo cuenta, iniciar sesión</a>
+                    <a href="index.html">Ya tengo cuenta, iniciar sesión</a>
                 </div>
             </div>
         </div>
