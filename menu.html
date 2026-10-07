@@ -3,54 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ACME AIR: menú principal para buscar vuelos, hacer check-in o consultar tus vuelos.">
     <title>Menú Principal - Acme Air</title>
     <!-- Tipografía Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/menu.css">
+    <!-- Estilos: tokens/componentes → layout → formularios → responsive -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <div class="main-container">
-        <!-- Banner superior -->
-        <header class="header-banner">
-            <img src="img/icons/Logo.svg" alt="Acme Air - Flying to your dreams" class="logo">
+    <div class="app">
+        <!-- Estado del menú (hamburguesa en móvil, sidebar en desktop) -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+        <header class="site-header">
+            <label for="menu-toggle" class="menu-btn">
+                <svg class="menu-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect class="menu-btn__linea" x="2" y="4.8" width="20" height="2.2" rx="1.1"></rect>
+                    <rect class="menu-btn__linea" x="2" y="10.9" width="20" height="2.2" rx="1.1"></rect>
+                    <rect class="menu-btn__linea" x="2" y="17" width="20" height="2.2" rx="1.1"></rect>
+                </svg>
+                <span class="visually-hidden">Abrir menú</span>
+            </label>
+            <a href="menu.html" class="site-logo" aria-label="Acme Air, ir al menú principal">
+                <img src="img/icons/Logo.svg" alt="Acme Air - Flying to your dreams" class="logo">
+            </a>
         </header>
 
-        <!-- Contenedor de la tarjeta blanca -->
-        <main class="card-container">
-            <div class="menu-content">
-                <h1>¡Hola John Doe!</h1>
-                <p class="subtitle">¿Qué quieres hacer?</p>
-                <a href="index.html" class="logout-link">Cerrar Sesión</a>
-
-                <!-- Opciones del menú -->
-                <nav class="options-list" aria-label="Opciones del menú principal">
-                    <a href="buscar-vuelos.html" class="menu-card">
-                        <div class="card-icon">
-                            <img src="img/icons/plane.svg" alt="">
-                        </div>
-                        <span class="card-title">Buscar vuelos</span>
-                        <img src="img/icons/chevron-right.svg" class="arrow-icon" alt="" aria-hidden="true">
-                    </a>
-
-                    <a href="checkin.html" class="menu-card">
-                        <div class="card-icon">
-                            <img src="img/icons/clipboard-check.svg" alt="">
-                        </div>
-                        <span class="card-title">Check In</span>
-                        <img src="img/icons/chevron-right.svg" class="arrow-icon" alt="" aria-hidden="true">
-                    </a>
-
-                    <a href="mis-vuelos.html" class="menu-card">
-                        <div class="card-icon">
-                            <img src="img/icons/list.svg" alt="">
-                        </div>
-                        <span class="card-title">Mis Vuelos</span>
-                        <img src="img/icons/chevron-right.svg" class="arrow-icon" alt="" aria-hidden="true">
-                    </a>
-                </nav>
+        <nav class="sidebar" aria-label="Menú de navegación">
+            <label for="menu-toggle" class="sidebar__cerrar">Cerrar menú</label>
+            <div class="sidebar__brand">
+                <img src="img/icons/iconoLogo.svg" alt="" class="sidebar__brand-icon">
+                <span class="sidebar__brand-texto">ACME AIR</span>
             </div>
+            <a href="menu.html" class="sidebar__link" aria-current="page">Inicio</a>
+            <a href="buscar-vuelos.html" class="sidebar__link">Buscar vuelos</a>
+            <a href="checkin.html" class="sidebar__link">Check In</a>
+            <a href="mis-vuelos.html" class="sidebar__link">Mis vuelos</a>
+            <a href="index.html" class="sidebar__link sidebar__salir">Cerrar sesión</a>
+        </nav>
+
+        <main class="content content--centrado">
+            <div class="saludo">
+                <h1 class="saludo__nombre">¡Hola John Doe!</h1>
+                <p class="saludo__subtitulo">¿Qué quieres hacer?</p>
+                <a href="index.html" class="saludo__salir">Cerrar Sesión</a>
+            </div>
+
+            <nav class="opciones" aria-label="Opciones del menú principal">
+                <a href="buscar-vuelos.html" class="opcion">
+                    <span class="opcion__icono">
+                        <img src="img/icons/plane.svg" alt="">
+                    </span>
+                    <span class="opcion__titulo">Buscar vuelos</span>
+                    <img src="img/icons/chevron-right.svg" class="opcion__flecha" alt="" aria-hidden="true">
+                </a>
+
+                <a href="checkin.html" class="opcion">
+                    <span class="opcion__icono">
+                        <img src="img/icons/clipboard-check.svg" alt="">
+                    </span>
+                    <span class="opcion__titulo">Check In</span>
+                    <img src="img/icons/chevron-right.svg" class="opcion__flecha" alt="" aria-hidden="true">
+                </a>
+
+                <a href="mis-vuelos.html" class="opcion">
+                    <span class="opcion__icono">
+                        <img src="img/icons/list.svg" alt="">
+                    </span>
+                    <span class="opcion__titulo">Mis Vuelos</span>
+                    <img src="img/icons/chevron-right.svg" class="opcion__flecha" alt="" aria-hidden="true">
+                </a>
+            </nav>
         </main>
     </div>
 </body>

@@ -9,76 +9,100 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/buscar-vuelos.css">
+    <!-- Estilos: tokens/componentes → layout → formularios → responsive -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <div class="main-container">
-        <!-- Banner superior -->
-        <header class="header-banner">
-            <a href="menu.html" aria-label="Acme Air, ir al menú principal">
+    <div class="app">
+        <!-- Estado del menú (hamburguesa en móvil, sidebar en desktop) -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+        <header class="site-header">
+            <label for="menu-toggle" class="menu-btn">
+                <svg class="menu-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect class="menu-btn__linea" x="2" y="4.8" width="20" height="2.2" rx="1.1"></rect>
+                    <rect class="menu-btn__linea" x="2" y="10.9" width="20" height="2.2" rx="1.1"></rect>
+                    <rect class="menu-btn__linea" x="2" y="17" width="20" height="2.2" rx="1.1"></rect>
+                </svg>
+                <span class="visually-hidden">Abrir menú</span>
+            </label>
+            <a href="menu.html" class="site-logo" aria-label="Acme Air, ir al menú principal">
                 <img src="img/icons/Logo.svg" alt="Acme Air - Flying to your dreams" class="logo">
             </a>
         </header>
 
-        <!-- Contenedor de la tarjeta blanca -->
-        <main class="card-container">
-            <div class="search-content">
-
-                <!-- Usuario y cierre de sesión -->
-                <section class="usuario" aria-label="Sesión de usuario">
-                    <svg class="usuario__avatar" viewBox="0 0 64 64" role="img" aria-label="Foto de perfil de John Doe">
-                        <circle cx="32" cy="32" r="31" fill="#fff" stroke="#c9c9d1" stroke-width="2"/>
-                        <circle cx="32" cy="24" r="10" fill="#7e57c2"/>
-                        <path d="M12 52c2-11 11-16 20-16s18 5 20 16c-6 6-13 9-20 9s-14-3-20-9z" fill="#c2409a"/>
-                    </svg>
-                    <div class="usuario__datos">
-                        <p class="usuario__nombre">John Doe</p>
-                        <a class="usuario__salir" href="index.html">Cerrar Sesión</a>
-                    </div>
-                </section>
-
-                <h1 class="titulo" id="titulo-busqueda">Busqueda de Vuelos</h1>
-
-                <form class="formulario" action="vuelos.html" method="get" aria-labelledby="titulo-busqueda">
-
-                    <div class="campo-check">
-                        <input type="checkbox" id="solo-ida" name="solo-ida" value="si">
-                        <label for="solo-ida">Solo ida</label>
-                    </div>
-
-                    <div class="campo">
-                        <input type="text" id="origen" name="origen" placeholder=" " list="ciudades" autocomplete="off" required>
-                        <label for="origen">Origen</label>
-                    </div>
-
-                    <div class="campo">
-                        <input type="text" id="destino" name="destino" placeholder=" " list="ciudades" autocomplete="off" required>
-                        <label for="destino">Destino</label>
-                    </div>
-
-                    <div class="campo campo--fecha">
-                        <input type="date" id="fecha-salida" name="fecha-salida" required>
-                        <label for="fecha-salida">Fecha de salida</label>
-                    </div>
-
-                    <div class="campo campo--fecha campo--regreso">
-                        <input type="date" id="fecha-regreso" name="fecha-regreso">
-                        <label for="fecha-regreso">Fecha de regreso</label>
-                    </div>
-
-                    <datalist id="ciudades">
-                        <option value="Bogotá"></option>
-                        <option value="Barranquilla"></option>
-                        <option value="Medellín"></option>
-                        <option value="Cali"></option>
-                        <option value="Cartagena"></option>
-                        <option value="Bucaramanga"></option>
-                    </datalist>
-
-                    <button type="submit" class="btn-buscar">Buscar</button>
-                </form>
-
+        <nav class="sidebar" aria-label="Menú de navegación">
+            <label for="menu-toggle" class="sidebar__cerrar">Cerrar menú</label>
+            <div class="sidebar__brand">
+                <img src="img/icons/iconoLogo.svg" alt="" class="sidebar__brand-icon">
+                <span class="sidebar__brand-texto">ACME AIR</span>
             </div>
+            <a href="menu.html" class="sidebar__link">Inicio</a>
+            <a href="buscar-vuelos.html" class="sidebar__link" aria-current="page">Buscar vuelos</a>
+            <a href="checkin.html" class="sidebar__link">Check In</a>
+            <a href="mis-vuelos.html" class="sidebar__link">Mis vuelos</a>
+            <a href="index.html" class="sidebar__link sidebar__salir">Cerrar sesión</a>
+        </nav>
+
+        <main class="content">
+
+            <!-- Usuario y cierre de sesión -->
+            <section class="usuario" aria-label="Sesión de usuario">
+                <svg class="usuario__avatar" viewBox="0 0 64 64" role="img" aria-label="Foto de perfil de John Doe">
+                    <circle cx="32" cy="32" r="31" fill="#fff" stroke="#c9c9d1" stroke-width="2"/>
+                    <circle cx="32" cy="24" r="10" fill="#7e57c2"/>
+                    <path d="M12 52c2-11 11-16 20-16s18 5 20 16c-6 6-13 9-20 9s-14-3-20-9z" fill="#c2409a"/>
+                </svg>
+                <div class="usuario__datos">
+                    <p class="usuario__nombre">John Doe</p>
+                    <a class="usuario__salir" href="index.html">Cerrar Sesión</a>
+                </div>
+            </section>
+
+            <h1 class="titulo" id="titulo-busqueda">Búsqueda de Vuelos</h1>
+
+            <form class="formulario" action="vuelos.html" method="get" aria-labelledby="titulo-busqueda">
+
+                <div class="campo-check">
+                    <input type="checkbox" id="solo-ida" name="solo-ida" value="si">
+                    <label for="solo-ida">Solo ida</label>
+                </div>
+
+                <div class="campo">
+                    <input type="text" id="origen" name="origen" placeholder=" " list="ciudades" autocomplete="off" required>
+                    <label for="origen">Origen</label>
+                </div>
+
+                <div class="campo">
+                    <input type="text" id="destino" name="destino" placeholder=" " list="ciudades" autocomplete="off" required>
+                    <label for="destino">Destino</label>
+                </div>
+
+                <div class="campo campo--fecha">
+                    <input type="date" id="fecha-salida" name="fecha-salida" required>
+                    <label for="fecha-salida">Fecha de salida</label>
+                </div>
+
+                <div class="campo campo--fecha campo--regreso">
+                    <input type="date" id="fecha-regreso" name="fecha-regreso">
+                    <label for="fecha-regreso">Fecha de regreso</label>
+                </div>
+
+                <datalist id="ciudades">
+                    <option value="Bogotá"></option>
+                    <option value="Barranquilla"></option>
+                    <option value="Medellín"></option>
+                    <option value="Cali"></option>
+                    <option value="Cartagena"></option>
+                    <option value="Bucaramanga"></option>
+                </datalist>
+
+                <button type="submit" class="btn-primario">Buscar</button>
+            </form>
+
         </main>
     </div>
 </body>
