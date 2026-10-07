@@ -1,0 +1,239 @@
+/* ==========================================
+   layout.css
+   Estructura de página: marco de la app, cabecera,
+   menú (hamburguesa en móvil / sidebar en desktop)
+   y layout de las vistas de autenticación.
+   ========================================== */
+
+/* ---------- 1. Marco de la aplicación ---------- */
+.app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--blanco);
+}
+
+/* ---------- 2. Cabecera con degradado ---------- */
+.site-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 1.25rem;
+    background: var(--gradiente);
+}
+
+.site-logo {
+    display: block;
+    width: 100%;
+    max-width: 7rem;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+    filter: brightness(0) invert(1); /* Pone el logo de color blanco */
+}
+
+/* ---------- 3. Menú: checkbox oculto + botón hamburguesa ----------
+   El checkbox .menu-toggle guarda el estado abierto/cerrado.
+   El <label for="menu-toggle"> lo activa al hacer clic. */
+.menu-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.menu-btn {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+/* Icono svg: 3 barras que se transforman en X */
+.menu-btn__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: visible;
+}
+
+.menu-btn__linea {
+    fill: var(--blanco);
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Foco por teclado: el foco llega al checkbox oculto, se marca el botón visible */
+.menu-toggle:focus-visible ~ .site-header .menu-btn {
+    outline: 3px solid var(--blanco);
+    outline-offset: 3px;
+}
+
+/* Hamburguesa → X cuando el menú está abierto */
+.menu-toggle:checked ~ .site-header .menu-btn__linea:nth-child(1) {
+    transform: translateY(0.4375rem) rotate(45deg);
+}
+
+.menu-toggle:checked ~ .site-header .menu-btn__linea:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle:checked ~ .site-header .menu-btn__linea:nth-child(3) {
+    transform: translateY(-0.4375rem) rotate(-45deg);
+}
+
+/* ---------- 4. Menú desplegable (móvil) ----------
+   En móvil es un bloque que se despliega bajo la cabecera.
+   Desktop lo convierte en sidebar lateral (ver responsive.css). */
+.sidebar {
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 1.5rem 2rem;   /* el padding inferior compensa el solapamiento de .content */
+    background-color: var(--blanco);
+    border-bottom: 1px solid var(--borde-suave);
+}
+
+.menu-toggle:checked ~ .sidebar {
+    display: flex;
+}
+
+.sidebar__cerrar {
+    display: none;
+}
+
+/* Marca del sidebar: solo visible en el sidebar fijo de desktop (ver responsive.css) */
+.sidebar__brand {
+    display: none;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--borde-suave);
+}
+
+.sidebar__brand-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+.sidebar__brand-texto {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--texto);
+}
+
+.sidebar__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 0.5rem;
+    border-bottom: 1px solid var(--borde-suave);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--texto);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.sidebar__link:hover,
+.sidebar__link[aria-current="page"] {
+    color: var(--azul);
+}
+
+.sidebar__salir {
+    margin-top: 0.5rem;
+    border-bottom: 0;
+    font-size: 0.875rem;
+    color: var(--texto-suave);
+}
+
+/* ---------- 5. Contenido principal (tarjeta blanca) ---------- */
+.content {
+    position: relative;
+    flex: 1;
+    margin-top: -1.5625rem;      /* solapa la cabecera */
+    padding: 1.875rem 1.5rem 2.5rem;
+    background-color: var(--blanco);
+    border-radius: 1.875rem 1.875rem 0 0;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Botón suelto al final de la tarjeta (p. ej. "Volver") */
+.content > .btn-primario {
+    margin-top: 1.75rem;
+}
+
+/* Variante: centra el contenido verticalmente en pantallas donde sobra
+   espacio (p. ej. el menú principal, con pocas tarjetas) */
+.content--centrado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Listados de vuelos: apilados en móvil */
+.lista-vuelos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.lista-vuelos > li {
+    display: flex;
+    min-width: 0;
+}
+
+.lista-vuelos > li > .vuelo {
+    flex: 1;
+}
+
+/* Opciones del menú principal: apiladas en móvil */
+.opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ---------- 6. Vistas de autenticación (login, registro, etc.) ---------- */
+.auth {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--blanco);
+}
+
+.auth__brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.875rem 1.25rem;
+    background: var(--gradiente-diagonal);
+}
+
+.auth__logo {
+    width: 8.75rem;
+}
+
+.auth__form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.875rem 1.25rem;
+}

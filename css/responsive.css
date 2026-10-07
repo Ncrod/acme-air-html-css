@@ -1,0 +1,413 @@
+/* ==========================================
+   responsive.css
+   Todos los breakpoints del proyecto:
+     320px  → móvil pequeño (ajustes de compactación)
+     768px  → tablet (app tipo dashboard: sidebar fijo separado del
+              contenido, a todo el ancho de la pantalla)
+     1024px → desktop (mismo esquema que tablet, con más espacio)
+   Base = móvil (mobile-first) en style.css, layout.css y forms.css.
+   En móvil el menú es desplegable: el botón hamburguesa abre un
+   panel que empuja el contenido hacia abajo. Desde 768px el menú
+   deja de ser un panel flotante: pasa a ser un sidebar fijo y
+   siempre visible, separado del contenido (no una tarjeta de
+   móvil estirada en medio de la pantalla).
+   ========================================== */
+
+/* ==========================================
+   320px — Móvil pequeño
+   ========================================== */
+@media screen and (max-width: 320px) {
+    .site-header {
+        padding: 1.125rem 0.9375rem;
+    }
+
+    .site-logo {
+        max-width: 6rem;
+    }
+
+    .menu-btn {
+        left: 0.75rem;
+    }
+
+    .content {
+        padding: 1.25rem 0.9375rem 2rem;
+        border-radius: 1.25rem 1.25rem 0 0;
+    }
+
+    .titulo {
+        margin: 1.25rem 0 1rem;
+    }
+
+    .usuario__avatar {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .vuelo {
+        gap: 0.625rem;
+        padding: 0.875rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+
+    .vuelo__icono {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+
+    .opcion {
+        padding: 0.875rem 1rem;
+    }
+
+    .formulario--tarjeta {
+        padding: 1.25rem 0.875rem;
+    }
+
+    .auth__logo {
+        width: 7rem;
+    }
+
+    .auth__form {
+        padding: 1.5rem 0.9375rem;
+    }
+}
+
+/* ==========================================
+   768px — Tablet y escritorio
+   La app pasa a ser un layout de dos columnas: sidebar fijo y
+   siempre visible a la izquierda, cabecera + contenido a la
+   derecha ocupando el resto del ancho completo de la ventana.
+   El botón hamburguesa desaparece: ya no hace falta desplegar nada.
+   ========================================== */
+@media screen and (min-width: 768px) {
+    body {
+        background-color: var(--fondo-app);
+    }
+
+    .app {
+        display: grid;
+        grid-template-columns: 14.5rem minmax(0, 1fr);
+        grid-template-rows: auto 1fr;
+        max-width: none;
+        width: 100%;
+        min-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    /* El botón hamburguesa y su checkbox dejan de ser necesarios: el sidebar es fijo */
+    .menu-toggle,
+    .menu-btn {
+        display: none;
+    }
+
+    .site-header {
+        grid-column: 2;
+        grid-row: 1;
+        justify-content: flex-start;
+        padding: 1.75rem 2.5rem;
+    }
+
+    .site-logo {
+        max-width: 8rem;
+    }
+
+    /* Sidebar: deja de ser un panel desplegable y pasa a estar siempre visible,
+       separado del contenido por un borde */
+    .sidebar {
+        position: static;
+        grid-column: 1;
+        grid-row: 1 / -1;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 1.75rem 1.25rem;
+        background-color: var(--blanco);
+        border-right: 1px solid var(--borde-suave);
+        border-bottom: 0;
+        box-shadow: none;
+        transform: none;
+        visibility: visible;
+        overflow-y: auto;
+    }
+
+    .sidebar__brand {
+        display: flex;
+    }
+
+    .sidebar__link {
+        padding: 0.875rem 0.625rem;
+        border-radius: 0.5rem;
+    }
+
+    .sidebar__link:hover {
+        background-color: var(--fondo-app);
+    }
+
+    .sidebar__link[aria-current="page"] {
+        background-color: #eaf5ff;
+        font-weight: 600;
+    }
+
+    /* Contenido: centrado con un ancho máximo y padding lateral, dentro de
+       su propia columna (ocupa todo el alto y ancho que le sobra a la
+       derecha del sidebar, nunca una tarjeta angosta flotando sola) */
+    .content {
+        grid-column: 2;
+        grid-row: 2;
+        max-width: 52rem;
+        width: 100%;
+        margin: 0 auto;
+        padding: 1rem 2.5rem 3.5rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .content--centrado {
+        min-height: 100%;
+    }
+
+    .titulo {
+        margin: 1.75rem 0 1.5rem;
+    }
+
+    .usuario__avatar {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    /* Botones y formularios con ancho limitado y centrados */
+    .btn-primario {
+        max-width: 20rem;
+        margin-inline: auto;
+    }
+
+    .formulario {
+        max-width: 32rem;
+        margin-inline: auto;
+    }
+
+    .formulario > .btn-primario {
+        margin-top: 1rem;
+    }
+
+    .resumen-busqueda {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.75rem;
+        margin: -1rem 0 2rem;
+        text-align: center;
+    }
+
+    .resumen-busqueda span::after {
+        content: " ·";
+    }
+
+    /* Listado de vuelos: cuadrícula fluida. El mínimo (23.5rem) es el
+       ancho real que necesita una tarjeta de vuelo sin partirse o
+       desbordarse sobre la de al lado */
+    .lista-vuelos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(23.5rem, 1fr));
+        gap: 1.5rem;
+    }
+
+    .lista-vuelos > li > .vuelo {
+        height: 100%;
+    }
+
+    .filtros {
+        justify-content: center;
+    }
+
+    /* Menú principal: las 3 opciones en fila, más grandes para
+       aprovechar el ancho disponible */
+    .opciones {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .opcion {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem 1.25rem;
+        text-align: center;
+    }
+
+    .opcion__icono {
+        width: 4.75rem;
+        height: 4.75rem;
+    }
+
+    .opcion__icono img {
+        width: 4.75rem;
+        height: 4.75rem;
+    }
+
+    .opcion__titulo {
+        flex: none;
+        text-align: center;
+        font-size: 1.0625rem;
+    }
+
+    .opcion__flecha {
+        display: none;
+    }
+
+    .saludo {
+        margin-bottom: 1rem;
+    }
+
+    .saludo__nombre {
+        font-size: 1.75rem;
+    }
+
+    .saludo__subtitulo {
+        font-size: 1.3125rem;
+    }
+
+    /* Autenticación: panel de marca a la izquierda y formulario a la derecha,
+       a pantalla completa (sin recuadro) */
+    .auth {
+        flex-direction: row;
+    }
+
+    .auth__brand {
+        flex: 1;
+        padding: 2.5rem;
+    }
+
+    .auth__logo {
+        width: 11rem;
+    }
+
+    .auth__form {
+        flex: 1.1;
+        padding: 2.5rem 2rem;
+    }
+
+    .form-box {
+        max-width: 22rem;
+    }
+}
+
+/* ==========================================
+   1024px — Desktop
+   Mismo esquema de dos columnas que la tablet, con un sidebar y
+   un contenido algo más amplios para aprovechar el ancho extra.
+   ========================================== */
+@media screen and (min-width: 1024px) {
+    .app {
+        grid-template-columns: 17rem minmax(0, 1fr);
+    }
+
+    .site-header {
+        padding: 2rem 3rem;
+    }
+
+    .site-logo {
+        max-width: 10rem;
+    }
+
+    .sidebar {
+        padding: 2rem 1.5rem;
+    }
+
+    .content {
+        max-width: 64rem;
+        padding: 1rem 3rem 4rem;
+    }
+
+    /* Check-in: tarjeta del vuelo y formulario lado a lado, pero solo si
+       de verdad entran (auto-fit): si no hay espacio, se apilan en vez
+       de desbordarse una sobre la otra */
+    .content--checkin {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+        column-gap: 2rem;
+        align-items: start;
+    }
+
+    .content--checkin > .usuario,
+    .content--checkin > .titulo {
+        grid-column: 1 / -1;
+    }
+
+    .content--checkin > .vuelo,
+    .content--checkin > .formulario--tarjeta {
+        min-width: 0;
+    }
+
+    .content--checkin > .formulario--tarjeta {
+        margin-top: 0;
+        max-width: none;
+        padding: 2rem;
+    }
+
+    .content--checkin > .formulario--tarjeta > .btn-primario {
+        max-width: none;
+    }
+
+    /* Listados: más aire entre tarjetas al haber más ancho disponible */
+    .lista-vuelos {
+        grid-template-columns: repeat(auto-fit, minmax(23.5rem, 1fr));
+        gap: 1.75rem;
+    }
+
+    /* Menú principal: tarjetas aún más grandes */
+    .opciones {
+        gap: 1.75rem;
+    }
+
+    .opcion {
+        padding: 2.25rem 1.5rem;
+    }
+
+    .opcion__icono {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .opcion__icono img {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .auth__brand {
+        padding: 4rem;
+    }
+
+    .auth__logo {
+        width: 13rem;
+    }
+
+    .auth__form {
+        padding: 4rem;
+    }
+
+    .form-box {
+        max-width: 24rem;
+    }
+
+    .formulario {
+        max-width: 36rem;
+    }
+}
+
+/* ==========================================
+   Movimiento reducido (accesibilidad)
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+
+    .btn-primario:hover,
+    .opcion:hover {
+        transform: none;
+    }
+}
