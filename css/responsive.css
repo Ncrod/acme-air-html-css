@@ -220,12 +220,17 @@
         justify-content: center;
     }
 
-    /* Menú principal: las 3 opciones en fila, más grandes para
-       aprovechar el ancho disponible */
+    /* Menú principal: grid de 2 columnas, más grande para
+       aprovechar el ancho disponible. La última opción ocupa
+       todo el ancho si sobra una celda */
     .opciones {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.5rem;
+    }
+
+    .opciones > .opcion:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
     }
 
     .opcion {
