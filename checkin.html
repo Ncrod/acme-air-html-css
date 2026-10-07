@@ -9,19 +9,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/checkin.css">
+    <!-- Estilos: tokens/componentes → layout → formularios → responsive -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <div class="main-container">
-        <!-- Banner superior -->
-        <header class="header-banner">
-            <a href="menu.html" aria-label="Acme Air, ir al menú principal">
+    <div class="app">
+        <!-- Estado del menú (hamburguesa en móvil, sidebar en desktop) -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+        <header class="site-header">
+            <label for="menu-toggle" class="menu-btn">
+                <svg class="menu-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect class="menu-btn__linea" x="2" y="4.8" width="20" height="2.2" rx="1.1"></rect>
+                    <rect class="menu-btn__linea" x="2" y="10.9" width="20" height="2.2" rx="1.1"></rect>
+                    <rect class="menu-btn__linea" x="2" y="17" width="20" height="2.2" rx="1.1"></rect>
+                </svg>
+                <span class="visually-hidden">Abrir menú</span>
+            </label>
+            <a href="menu.html" class="site-logo" aria-label="Acme Air, ir al menú principal">
                 <img src="img/icons/Logo.svg" alt="Acme Air - Flying to your dreams" class="logo">
             </a>
         </header>
 
-        <!-- Contenedor de la tarjeta blanca -->
-        <main class="card-container">
+        <nav class="sidebar" aria-label="Menú de navegación">
+            <label for="menu-toggle" class="sidebar__cerrar">Cerrar menú</label>
+            <div class="sidebar__brand">
+                <img src="img/icons/iconoLogo.svg" alt="" class="sidebar__brand-icon">
+                <span class="sidebar__brand-texto">ACME AIR</span>
+            </div>
+            <a href="menu.html" class="sidebar__link">Inicio</a>
+            <a href="buscar-vuelos.html" class="sidebar__link">Buscar vuelos</a>
+            <a href="checkin.html" class="sidebar__link" aria-current="page">Check In</a>
+            <a href="mis-vuelos.html" class="sidebar__link">Mis vuelos</a>
+            <a href="index.html" class="sidebar__link sidebar__salir">Cerrar sesión</a>
+        </nav>
+
+        <main class="content content--checkin">
 
             <!-- Usuario y cierre de sesión -->
             <section class="usuario" aria-label="Sesión de usuario">
@@ -50,7 +76,7 @@
             </article>
 
             <!-- Formulario de check-in -->
-            <form class="formulario-checkin" action="menu.html" method="get" aria-labelledby="titulo-checkin">
+            <form class="formulario formulario--tarjeta" action="menu.html" method="get" aria-labelledby="titulo-checkin">
 
                 <fieldset class="grupo">
                     <legend class="grupo__titulo">Datos de la reserva</legend>

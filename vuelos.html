@@ -9,19 +9,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/vuelos.css">
+    <!-- Estilos: tokens/componentes → layout → formularios → responsive -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <div class="main-container">
-        <!-- Banner superior -->
-        <header class="header-banner">
-            <a href="menu.html" aria-label="Acme Air, ir al menú principal">
+    <div class="app">
+        <!-- Estado del menú (hamburguesa en móvil, sidebar en desktop) -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+        <header class="site-header">
+            <label for="menu-toggle" class="menu-btn">
+                <svg class="menu-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect class="menu-btn__linea" x="2" y="4.8" width="20" height="2.2" rx="1.1"></rect>
+                    <rect class="menu-btn__linea" x="2" y="10.9" width="20" height="2.2" rx="1.1"></rect>
+                    <rect class="menu-btn__linea" x="2" y="17" width="20" height="2.2" rx="1.1"></rect>
+                </svg>
+                <span class="visually-hidden">Abrir menú</span>
+            </label>
+            <a href="menu.html" class="site-logo" aria-label="Acme Air, ir al menú principal">
                 <img src="img/icons/Logo.svg" alt="Acme Air - Flying to your dreams" class="logo">
             </a>
         </header>
 
-        <!-- Contenedor de la tarjeta blanca -->
-        <main class="card-container">
+        <nav class="sidebar" aria-label="Menú de navegación">
+            <label for="menu-toggle" class="sidebar__cerrar">Cerrar menú</label>
+            <div class="sidebar__brand">
+                <img src="img/icons/iconoLogo.svg" alt="" class="sidebar__brand-icon">
+                <span class="sidebar__brand-texto">ACME AIR</span>
+            </div>
+            <a href="menu.html" class="sidebar__link">Inicio</a>
+            <a href="buscar-vuelos.html" class="sidebar__link" aria-current="page">Buscar vuelos</a>
+            <a href="checkin.html" class="sidebar__link">Check In</a>
+            <a href="mis-vuelos.html" class="sidebar__link">Mis vuelos</a>
+            <a href="index.html" class="sidebar__link sidebar__salir">Cerrar sesión</a>
+        </nav>
+
+        <main class="content">
 
             <!-- Usuario y cierre de sesión -->
             <section class="usuario" aria-label="Sesión de usuario">
@@ -44,48 +70,67 @@
                 <time datetime="2026-09-29">Septiembre - 29</time>
             </p>
 
-            <!-- Listado de vuelos -->
-            <ul class="lista-vuelos" aria-labelledby="titulo-vuelos">
-                <li>
-                    <article class="vuelo" aria-label="Vuelo VAA025">
-                        <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
-                        <div class="vuelo__info">
-                            <p class="vuelo__horario"><time>05:30</time> - <time>06:30</time></p>
-                            <p class="vuelo__duracion">1h 00 min</p>
-                        </div>
-                        <div class="vuelo__extra">
-                            <p class="vuelo__codigo">VAA025</p>
-                            <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>150.600</strong></p>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="vuelo" aria-label="Vuelo VAA412">
-                        <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
-                        <div class="vuelo__info">
-                            <p class="vuelo__horario"><time>10:30</time> - <time>12:05</time></p>
-                            <p class="vuelo__duracion">1h 35 min</p>
-                        </div>
-                        <div class="vuelo__extra">
-                            <p class="vuelo__codigo">VAA412</p>
-                            <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>260.050</strong></p>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="vuelo" aria-label="Vuelo VAA836">
-                        <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
-                        <div class="vuelo__info">
-                            <p class="vuelo__horario"><time>14:15</time> - <time>15:45</time></p>
-                            <p class="vuelo__duracion">1h 30 min</p>
-                        </div>
-                        <div class="vuelo__extra">
-                            <p class="vuelo__codigo">VAA836</p>
-                            <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>150.600</strong></p>
-                        </div>
-                    </article>
-                </li>
-            </ul>
+            <!-- Filtro por franja horaria (solo CSS): radios ocultos + chips -->
+            <div class="resultados">
+                <input type="radio" name="franja" id="franja-todas" class="filtro-input" checked>
+                <input type="radio" name="franja" id="franja-manana" class="filtro-input">
+                <input type="radio" name="franja" id="franja-tarde" class="filtro-input">
+
+                <div class="filtros" role="group" aria-label="Filtrar por horario">
+                    <label for="franja-todas" class="chip">Todos</label>
+                    <label for="franja-manana" class="chip">Mañana</label>
+                    <label for="franja-tarde" class="chip">Tarde</label>
+                </div>
+
+                <!-- Listado de vuelos -->
+                <ul class="lista-vuelos" aria-labelledby="titulo-vuelos">
+                    <li data-franja="manana">
+                        <article class="vuelo" aria-label="Vuelo VAA025">
+                            <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
+                            <div class="vuelo__info">
+                                <p class="vuelo__horario"><time>05:30</time> - <time>06:30</time></p>
+                                <p class="vuelo__duracion">1h 00 min</p>
+                            </div>
+                            <div class="vuelo__extra">
+                                <p class="vuelo__codigo">VAA025</p>
+                                <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>150.600</strong></p>
+                            </div>
+                            <input type="checkbox" id="ocultar-v1" class="vuelo-dismiss">
+                            <label for="ocultar-v1" class="vuelo__ocultar" aria-label="Ocultar vuelo VAA025">×</label>
+                        </article>
+                    </li>
+                    <li data-franja="manana">
+                        <article class="vuelo" aria-label="Vuelo VAA412">
+                            <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
+                            <div class="vuelo__info">
+                                <p class="vuelo__horario"><time>10:30</time> - <time>12:05</time></p>
+                                <p class="vuelo__duracion">1h 35 min</p>
+                            </div>
+                            <div class="vuelo__extra">
+                                <p class="vuelo__codigo">VAA412</p>
+                                <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>260.050</strong></p>
+                            </div>
+                            <input type="checkbox" id="ocultar-v2" class="vuelo-dismiss">
+                            <label for="ocultar-v2" class="vuelo__ocultar" aria-label="Ocultar vuelo VAA412">×</label>
+                        </article>
+                    </li>
+                    <li data-franja="tarde">
+                        <article class="vuelo" aria-label="Vuelo VAA836">
+                            <img class="vuelo__icono" src="img/icons/plane-takeoff.svg" alt="">
+                            <div class="vuelo__info">
+                                <p class="vuelo__horario"><time>14:15</time> - <time>15:45</time></p>
+                                <p class="vuelo__duracion">1h 30 min</p>
+                            </div>
+                            <div class="vuelo__extra">
+                                <p class="vuelo__codigo">VAA836</p>
+                                <p class="vuelo__precio"><abbr title="Pesos colombianos">COP</abbr> <strong>150.600</strong></p>
+                            </div>
+                            <input type="checkbox" id="ocultar-v3" class="vuelo-dismiss">
+                            <label for="ocultar-v3" class="vuelo__ocultar" aria-label="Ocultar vuelo VAA836">×</label>
+                        </article>
+                    </li>
+                </ul>
+            </div>
 
             <a href="menu.html" class="btn-primario">Volver</a>
         </main>
