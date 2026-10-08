@@ -73,7 +73,6 @@ Formularios fluidos (`max-width` + tipografía proporcional).
 - Paleta: degradado rosa–violeta (`#d13cff` → `#00b0ff`)
 - Tipografía: Poppins / Open Sans
 - Botones primarios: `box-shadow` + hover `transform: scale(1.02)`
-- Iconos: [lucide.dev/icons](https://lucide.dev/icons/)
 
 ## Equipo
 
